@@ -1,9 +1,9 @@
 public class Swaping_var {
-    public static void main(String[] args) {
-        String x = "q";
-        String y = "qat";
+    public static void main(Stringjj[] args) {
+        Stringjj x = "q";
+        Stringjj y = "qat";
 
-        String temp;
+        Stringjj temp;
         temp = x;
         x = y;
         y = temp;

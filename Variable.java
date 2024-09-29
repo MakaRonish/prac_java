@@ -1,5 +1,5 @@
 public class Variable {
-    public static void main(String[] args) {
+    public static void main(Stringjj[] args) {
         int x = 100;
         System.out.println(x);
         System.out.println("My number is" + x);
@@ -15,7 +15,7 @@ public class Variable {
         double a = 3.12;
         System.out.println("My number is" + a);
 
-        String name = "Hello";
+        Stringjj name = "Hello";
         System.out.println(name);
 
     }

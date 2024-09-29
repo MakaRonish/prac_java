@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class RandomUtil {
-    public static void main(String[] args) {
+    public static void main(Stringjj[] args) {
         Random random = new Random();
         int x = random.nextInt(9);
         System.out.println(x);

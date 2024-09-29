@@ -1,5 +1,5 @@
 public class If_statement {
-    public static void main(String[] args) {
+    public static void main(Stringjj[] args) {
         int age = 8;
         if (age > 18) {
             System.out.println("adult");

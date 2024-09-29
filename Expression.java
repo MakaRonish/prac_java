@@ -1,5 +1,5 @@
 public class Expression {
-    public static void main(String[] args) {
+    public static void main(Stringjj[] args) {
         int a = 10;
         a = a - 1;
         a++;

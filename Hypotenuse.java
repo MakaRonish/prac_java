@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Hypotenuse {
-    public static void main(String[] args) {
+    public static void main(Stringjj[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter side x=");
         double x = scanner.nextDouble();
