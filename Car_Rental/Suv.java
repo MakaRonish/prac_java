@@ -11,7 +11,26 @@ public class Suv extends Car {
         setinsurancePerDay(insurancePerDay);
         setpricePerDay(pricePerDay);
         setisAvailable(isAvailable);
+        setType("SUV");
         this.seatCapacity = seatCapacity;
 
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%-3d | %-10s | %-14s | $%-11.2f | $%-9.2f | %-9s | %-10s | %-14s | %-12s | %-10s | %-10d | %-12d |",
+                getId(),
+                getName(),
+                getBrand(),
+                getPricePerDay(),
+                getInsurancePerDay(),
+                getIsAvailable() ? "Yes" : "No",
+                getType(),
+                "N/a",
+                "No",
+                "No",
+                0,
+                seatCapacity);
     }
 }

@@ -11,7 +11,26 @@ public class Economy extends Car {
         setinsurancePerDay(insurancePerDay);
         setpricePerDay(pricePerDay);
         setisAvailable(isAvailable);
+        setType("Economy");
         this.storageSpace = storageSpace;
 
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%-3d | %-10s | %-14s | $%-11.2f | $%-9.2f | %-9s | %-10s | %-14d | %-12s | %-10s | %-10d | %-12s |",
+                getId(),
+                getName(),
+                getBrand(),
+                getPricePerDay(),
+                getInsurancePerDay(),
+                getIsAvailable() ? "Yes" : "No",
+                getType(),
+                storageSpace,
+                "No",
+                "No",
+                0,
+                "N/A");
     }
 }

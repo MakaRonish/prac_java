@@ -8,10 +8,15 @@ public class Car {
     private double pricePerDay;
     private double insurancePerDay;
     private boolean isAvailable;
+    private String type;
 
     public void setId() {
         this.id = idCounter;
         idCounter++;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setName(String name) {
@@ -56,6 +61,23 @@ public class Car {
 
     public boolean getIsAvailable() {
         return this.isAvailable;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "%-3d | %-10s | %-12s | $%-12.2f | $%-9.2f | %-12s | %-8s",
+                id,
+                name,
+                brand,
+                pricePerDay,
+                insurancePerDay,
+                isAvailable ? "Yes" : "No",
+                type);
     }
 
 }
