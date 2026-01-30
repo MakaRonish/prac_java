@@ -12,6 +12,7 @@ public class Suv extends Car {
         setpricePerDay(pricePerDay);
         setisAvailable(isAvailable);
         setType("SUV");
+        setLuxury(0);
         this.seatCapacity = seatCapacity;
 
     }

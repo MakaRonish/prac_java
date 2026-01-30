@@ -9,6 +9,7 @@ public class Car {
     private double insurancePerDay;
     private boolean isAvailable;
     private String type;
+    private double luxuryTax;
 
     public void setId() {
         this.id = idCounter;
@@ -37,6 +38,14 @@ public class Car {
 
     public void setisAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
+    }
+
+    public void setLuxury(double luxuryTax){
+        this.luxuryTax=luxuryTax;
+    }
+
+    public double getLuxury(){
+        return this.luxuryTax;
     }
 
     public int getId() {

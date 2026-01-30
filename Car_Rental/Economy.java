@@ -12,6 +12,7 @@ public class Economy extends Car {
         setpricePerDay(pricePerDay);
         setisAvailable(isAvailable);
         setType("Economy");
+        setLuxury(0);
         this.storageSpace = storageSpace;
 
     }

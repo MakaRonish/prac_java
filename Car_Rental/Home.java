@@ -16,9 +16,19 @@ public class Home {
                     "3. Quit");
             userChoice = scanner.nextLine();
             option = correctInt(userChoice);
+            if (option <= 0 || option > 3){
+                System.out.println("In correct option choosen pls select from 1 to 3");
+                System.out.println("");
+            }
         } while (option <= 0 || option > 3);
+        
 
         return option;
+    }
+
+    public void rentCost(Car car){
+        
+
     }
 
     public int correctInt(String str) {
@@ -99,7 +109,9 @@ public class Home {
         cars.add(CRV);
         Home home = new Home();
         int option = home.homeMenu();
-        home.listCars(cars);
+        if (option==1||option==2){
+            home.listCars(cars);
+        }
 
     }
 
