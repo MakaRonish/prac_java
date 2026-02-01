@@ -3,6 +3,9 @@ package Car_Rental;
 import java.util.*;
 
 public class Home {
+    static ArrayList<Car> cars = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
     public int homeMenu() {
         Scanner scanner = new Scanner(System.in);
         String userChoice;
@@ -16,18 +19,27 @@ public class Home {
                     "3. Quit");
             userChoice = scanner.nextLine();
             option = correctInt(userChoice);
-            if (option <= 0 || option > 3){
+            if (option <= 0 || option > 3) {
                 System.out.println("In correct option choosen pls select from 1 to 3");
                 System.out.println("");
             }
         } while (option <= 0 || option > 3);
-        
 
         return option;
     }
 
-    public void rentCost(Car car){
-        
+    public double rentCost(Car car, int no_of_days) {
+        double perDayCost = car.getPricePerDay();
+        double insurance = car.getInsurancePerDay();
+        double luxury_tax = car.getLuxury();
+
+        double total_cost = no_of_days * (perDayCost + insurance) + luxury_tax;
+
+        if (no_of_days == 0) {
+            return (perDayCost * 600);
+        } else {
+            return total_cost;
+        }
 
     }
 
@@ -59,8 +71,28 @@ public class Home {
                 "No_of_Seats");
     }
 
+    public int rent_buy(ArrayList<Car> car, int option) {
+        int length = car.size();
+
+        String word = (option == 1) ? "Rent" : "Buy";
+        int result;
+        String car_id;
+        do {
+            System.out.printf("Select the car id you want to %s: ", word);
+            car_id = scanner.nextLine();
+            result = correctInt(car_id);
+            if (result < 0) {
+                System.out.println("Pls Enter a number:");
+            } else if (result > length) {
+                System.out.println("Wrong ID");
+            }
+        } while (result < 0 || result > length);
+        return (Integer.parseInt(car_id) - 1);
+
+    }
+
     public static void main(String[] args) {
-        ArrayList<Car> cars = new ArrayList<>();
+
         Economy Corolla = new Economy(
                 "Corolla", // name
                 "Toyota", // brand
@@ -109,8 +141,31 @@ public class Home {
         cars.add(CRV);
         Home home = new Home();
         int option = home.homeMenu();
-        if (option==1||option==2){
+        if (option == 1 || option == 2) {
             home.listCars(cars);
+            int car_id = home.rent_buy(cars, option);
+            if (option == 1) {
+                int result;
+                do {
+                    System.out.print("How many days to rent for: ");
+                    String days = scanner.nextLine();
+                    result = home.correctInt(days);
+                    if (result > 100) {
+                        System.out.println("Can not rent more than 100 days");
+
+                    } else if (result < 1) {
+                        System.out.println("Incorrect number of days");
+
+                    }
+                } while (result < 1 || result > 100);
+                double rent_cost = home.rentCost(cars.get(car_id), result);
+                System.out.printf("Total Cost for rent = %.2f", rent_cost);
+
+            } else {
+                double rent_cost = home.rentCost(cars.get(car_id), 0);
+                System.out.printf("Total Cost  = %.2f", rent_cost);
+
+            }
         }
 
     }
