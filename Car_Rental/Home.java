@@ -92,6 +92,7 @@ public class Home {
     }
 
     public static void main(String[] args) {
+        Transaction t = new Transaction();
 
         Economy Corolla = new Economy(
                 "Corolla", // name
@@ -144,6 +145,7 @@ public class Home {
         if (option == 1 || option == 2) {
             home.listCars(cars);
             int car_id = home.rent_buy(cars, option);
+            double rent_cost;
             if (option == 1) {
                 int result;
                 do {
@@ -158,14 +160,82 @@ public class Home {
 
                     }
                 } while (result < 1 || result > 100);
-                double rent_cost = home.rentCost(cars.get(car_id), result);
+                rent_cost = home.rentCost(cars.get(car_id), result);
                 System.out.printf("Total Cost for rent = %.2f", rent_cost);
 
             } else {
-                double rent_cost = home.rentCost(cars.get(car_id), 0);
+                rent_cost = home.rentCost(cars.get(car_id), 0);
                 System.out.printf("Total Cost  = %.2f", rent_cost);
 
             }
+            System.out.println("");
+            int result;
+            do {
+
+                System.out.println("Do you have account for payment?\n1. Yes\n2. No (create account)");
+                String pay_option = scanner.nextLine();
+                result = home.correctInt(pay_option);
+                if (result < 1) {
+                    System.out.println("Incorrect option");
+                }
+            } while (result < 1 || result > 2);
+            if (result == 1) {
+                int id;
+                int account_index = -1;
+                do {
+                    System.out.print("Account number or (q) to cancel: ");
+                    String ids = scanner.nextLine();
+                    if (ids.equals("q")) {
+                        id = -1;
+                        break;
+
+                    }
+                    id = home.correctInt(ids);
+                    if (id < 0) {
+                        System.out.println("Incorrect Account number ");
+                    } else {
+                        account_index = t.accountFinder(id);
+                        if (account_index == -1) {
+                            System.out.println("Account not found");
+                        }
+                    }
+                } while (id < 0 || account_index == -1);
+                Account customer_acc = Transaction.Bank.get(account_index);
+                double cus_Balance = customer_acc.getBalancec();
+                if (rent_cost < cus_Balance) {
+                    System.out.printf("Transaction complete\n$%f taken from your account", rent_cost);
+                    customer_acc.setBalance(cus_Balance - rent_cost);
+                } else {
+                    int opt = -1;
+                    do {
+
+                        System.out.println("Not enough balance\n1.Deposit\n2. Exit");
+                        String opts = scanner.nextLine();
+
+                        opt = home.correctInt(opts);
+                        if (opt == 1) {
+                            while (rent_cost > customer_acc.getBalancec()) {
+
+                                System.out.println("Not enough balance\nAmount to deposit: ");
+                                int amount = scanner.nextInt();
+                                System.out.println("deposited ");
+                                t.addBalance(amount, customer_acc.getId());
+                            }
+                            System.out.printf("Transaction complete\n$%f taken from your account", rent_cost);
+                            customer_acc.setBalance(cus_Balance - rent_cost);
+
+                        } else {
+                            System.out.println("Thanks for using!!");
+                        }
+
+                    } while (opt < 1 || opt > 2);
+
+                }
+
+            } else {
+                System.out.println("Thanks for browsing!!");
+            }
+
         }
 
     }
@@ -175,6 +245,10 @@ public class Home {
         for (Car c : car) {
             System.err.println(c);
         }
+    }
+
+    public void payment() {
+
     }
 
 }
