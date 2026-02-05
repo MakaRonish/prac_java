@@ -3,6 +3,7 @@ package Car_Rental;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Account {
+
     private static final AtomicInteger count = new AtomicInteger(98460);
     private String name;
     private long account_id;
