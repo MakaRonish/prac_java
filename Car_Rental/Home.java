@@ -179,9 +179,9 @@ public class Home {
                     System.out.println("Incorrect option");
                 }
             } while (result < 1 || result > 2);
+            int id;
+            int account_index = -1;
             if (result == 1) {
-                int id;
-                int account_index = -1;
                 do {
                     System.out.print("Account number or (q) to cancel: ");
                     String ids = scanner.nextLine();
@@ -200,10 +200,19 @@ public class Home {
                         }
                     }
                 } while (id < 0 || account_index == -1);
+
+            } else {
+                System.out.println("Thanks for choosing to open account");
+                long user_id = t.registerAccount();
+                account_index = t.accountFinder(user_id);
+
+            }
+            if (account_index != -1) {
+
                 Account customer_acc = Transaction.Bank.get(account_index);
                 double cus_Balance = customer_acc.getBalancec();
                 if (rent_cost < cus_Balance) {
-                    System.out.printf("Transaction complete\n$%f taken from your account", rent_cost);
+                    System.out.printf("Transaction complete\n$%.2f taken from your account", rent_cost);
                     customer_acc.setBalance(cus_Balance - rent_cost);
                 } else {
                     int opt = -1;
@@ -231,9 +240,6 @@ public class Home {
                     } while (opt < 1 || opt > 2);
 
                 }
-
-            } else {
-                System.out.println("Thanks for browsing!!");
             }
 
         }

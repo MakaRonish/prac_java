@@ -7,7 +7,7 @@ public class Transaction {
     Scanner scanner = new Scanner(System.in);
     static ArrayList<Account> Bank = new ArrayList<>();
 
-    public void registerAccount() {
+    public long registerAccount() {
 
         System.out.println("Welcome to register for an account ");
         System.out.print("Enter your name: ");
@@ -15,8 +15,9 @@ public class Transaction {
         Account account = new Account(name, 0);
         System.out.printf("Account Created\nName: %s\nAccount Number: %d\nBalance: %f: ", account.getName(),
                 account.getId(), account.getBalancec());
+        System.out.println("");
         Bank.add(account);
-
+        return account.getId();
     }
 
     public void addBalance(double balance, long id) {
@@ -29,7 +30,7 @@ public class Transaction {
 
     }
 
-    public int accountFinder(int id) {
+    public int accountFinder(long id) {
         int length = Bank.size();
         int p1 = 0;
         int p2 = length - 1;
@@ -50,7 +51,7 @@ public class Transaction {
     }
 
     public Transaction() {
-        Bank.add(new Account("Ronish", 1000));
+        Bank.add(new Account("Ronish", 9990000));
         Bank.add(new Account("Priya", 2500));
         Bank.add(new Account("Rey", 1500));
         Bank.add(new Account("Ashim", 3000));
