@@ -18,6 +18,14 @@ public class Main {
         a1.withdraw(99999);
         a1.withdraw(500);
 
+        ModArrayList listy= new ModArrayList<>();
+        listy.add(0);
+        listy.add(1);
+        listy.add(2);
+
+        System.out.println(listy.getUsingMod(1));
+        System.out.println(listy.getUsingMod(-1));
+
     }
     
 }
