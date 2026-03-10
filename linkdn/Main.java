@@ -14,17 +14,19 @@ public class Main {
         // System.out.println(e1);
         // System.out.println(e2);
 
-        Ba a1= new Ba("Ronish",1000);
-        a1.withdraw(99999);
-        a1.withdraw(500);
+        // Ba a1= new Ba("Ronish",1000);
+        // a1.withdraw(99999);
+        // a1.withdraw(500);
 
-        ModArrayList listy= new ModArrayList<>();
-        listy.add(0);
-        listy.add(1);
-        listy.add(2);
+        // ModArrayList listy= new ModArrayList<>();
+        // listy.add(0);
+        // listy.add(1);
+        // listy.add(2);
 
-        System.out.println(listy.getUsingMod(1));
-        System.out.println(listy.getUsingMod(-1));
+        // System.out.println(listy.getUsingMod(1));
+        // System.out.println(listy.getUsingMod(-1));
+
+        DigitsOnlyFileReader d = new DigitsOnlyFileReader(null);
 
     }
     
